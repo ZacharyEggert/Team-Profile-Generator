@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZacharyEggert/Team-Profile-Generator.git"
+  },
+  "author": "ZacharyEggert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZacharyEggert/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/ZacharyEggert/Team-Profile-Generator#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
