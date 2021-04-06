@@ -55,7 +55,7 @@ const promptManager = async () => {
 const promptEngineer = async () => {
     console.log("\nENGINEER: \n")
     const response = await inquirer.prompt([
-        empName, empID, empEmail,{type: 'input', message: 'GITHUB?', name: 'data'}
+        empName, empID, empEmail,{type: 'input', message: 'GITHUB USERNAME?', name: 'data'}
     ])
     response.role = 'ENGINEER'
     // console.log(response);
