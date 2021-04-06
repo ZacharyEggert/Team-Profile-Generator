@@ -44,7 +44,7 @@ const generateHTML = async () => {
 
     }
 
-
+    templater.fillTemplate(objectAccumulator);
 
 
 
