@@ -58,7 +58,7 @@ const promptEngineer = async () => {
         empName, empID, empEmail,{type: 'input', message: 'GITHUB?', name: 'data'}
     ])
     response.role = 'ENGINEER'
-    console.log(response);
+    // console.log(response);
     return response;
 }
 
@@ -72,7 +72,7 @@ const promptIntern = async () => {
         empName, empID, empEmail,{type: 'input', message: 'SCHOOL?', name: 'data'}
     ])
     response.role = 'INTERN'
-    console.log(response);
+    // console.log(response);
     return response;
 }
 
