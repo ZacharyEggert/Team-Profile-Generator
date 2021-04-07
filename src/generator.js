@@ -16,7 +16,7 @@ const generateHTML = async () => {
     const managerRes = await userPrompt.promptManager();
 
     roster.manager = (new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
-    //console.log(roster) //DEBUG
+    //console.log(roster)
 
     while (!done){
 

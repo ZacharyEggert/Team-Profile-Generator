@@ -32,7 +32,7 @@ const promptManager = async () => {
         new empQ('name'), new empQ('id'), new empQ('email'),{type: 'input', message: 'OFFICE NUMBER?', name: 'data'}
     ])
     response.role = 'MANAGER'
-    console.log(response)
+    //console.log(response)
     return response;
 }
 

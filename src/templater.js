@@ -119,7 +119,7 @@ const fillTemplate = (data) => {
 
 const managerTemplate = (managerData) => {
     const { name, id, email, officeNumber } = managerData;
-    console.log(managerData)
+    //console.log(managerData)
 
     const cardLiteral = `
 <div class='card'>
