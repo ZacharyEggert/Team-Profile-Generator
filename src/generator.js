@@ -16,7 +16,7 @@ const generateHTML = async () => {
     const managerRes = await userPrompt.promptManager();
 
     roster.manager = (new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
-    console.log(roster) //DEBUG
+    //console.log(roster) //DEBUG
 
     while (!done){
 
@@ -27,13 +27,13 @@ const generateHTML = async () => {
             case 'ENGINEER':
                 empRes = await userPrompt.promptEngineer();
                 roster.engineer[empRes.id]= (new Engineer(empRes.name, empRes.id, empRes.email, empRes.data));
-                console.log(roster);
+                //console.log(roster);
 
             break;
             case 'INTERN':
                 empRes = await userPrompt.promptIntern();
                 roster.intern[empRes.id] = (new Intern(empRes.name, empRes.id, empRes.email, empRes.data));
-                console.log(roster);
+                //console.log(roster);
             break;
             default: 
                 done = true;
@@ -41,9 +41,14 @@ const generateHTML = async () => {
         }
     }
 
-    const HTMLoutput = templater.fillTemplate(objectAccumulator);
-    fs.mkdir('./out', {recursive: true}, (e) => {e?console.error(e.message):null;})
-    fs.writeFileSync('./out/index.html', HTMLoutput, (e) => {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");})
+    const HTMLoutput = templater.fillTemplate(roster);
+
+    fs.mkdir('./out', {recursive: true}, (e) => 
+        {e?console.error(e.message):null;});
+    fs.writeFileSync('./out/index.html', HTMLoutput, (e) => 
+        {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");});
+    fs.writeFileSync('./out/roster.json', JSON.stringify(roster), (e) => 
+        {e?console.error(e.message):console.log("ROSTER FILE CREATED SUCCESSFULLY AT /out/roster.json")});
 
 
 

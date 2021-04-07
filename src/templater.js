@@ -118,7 +118,8 @@ const fillTemplate = (data) => {
 }
 
 const managerTemplate = (managerData) => {
-    const { name, id, email, data } = managerData;
+    const { name, id, email, officeNumber } = managerData;
+    console.log(managerData)
 
     const cardLiteral = `
 <div class='card'>
@@ -130,7 +131,7 @@ const managerTemplate = (managerData) => {
         <ul>
             <li>ID: ${id}</li>
             <li>Email: <a href="mailto:${email}">${email}</a></li>
-            <li>Office: ${data}</li>
+            <li>Office: ${officeNumber}</li>
         </ul>
     </div>
 </div>
@@ -140,7 +141,7 @@ const managerTemplate = (managerData) => {
 }
 
 const engineerTemplate = (engineerData) => {
-    const { name, id, email, data } = engineerData;
+    const { name, id, email, github } = engineerData;
 
     const cardLiteral = `
 <div class='card'>
@@ -152,7 +153,7 @@ const engineerTemplate = (engineerData) => {
         <ul>
             <li>ID: ${id}</li>
             <li>Email: <a href="mailto:${email}">${email}</a></li>
-        <li>Github: <a href="https://www.github.com/${data}">${data}</a></li>
+        <li>Github: <a href="https://www.github.com/${github}">${github}</a></li>
         </ul>
     </div>
 </div>
@@ -161,7 +162,7 @@ const engineerTemplate = (engineerData) => {
 }
 
 const internTemplate = (internData) => {
-    const { name, id, email, data } = internData;
+    const { name, id, email, school } = internData;
 
     const cardLiteral = `
 <div class='card'>
@@ -173,7 +174,7 @@ const internTemplate = (internData) => {
         <ul>
             <li>ID: ${id}</li>
             <li>Email: <a href="mailto:${email}">${email}</a></li>
-            <li>School: ${data}</li>
+            <li>School: ${school}</li>
         </ul>
     </div>
 </div>
