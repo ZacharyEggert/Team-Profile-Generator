@@ -2,10 +2,12 @@ const inquirer = require('inquirer');
 
 
 
-const empQ = (field) => {
-    this.type = 'input';
-    this.message = `EMPLOYEE ${field.toUpperCase()}?`
-    this.name = field;
+class empQ {
+    constructor(field) {
+        this.type = 'input';
+        this.message = `EMPLOYEE ${field.toUpperCase()}?`;
+        this.name = field;
+    }
 };
 
 /**
@@ -27,7 +29,7 @@ const empQ = (field) => {
 const promptManager = async () => {
     console.log("\nTEAM MANAGER: \n")
     const response = await inquirer.prompt([
-        new empQ('name'), new empQ('id'), empQ('email'),{type: 'input', message: 'OFFICE NUMBER?', name: 'data'}
+        new empQ('name'), new empQ('id'), new empQ('email'),{type: 'input', message: 'OFFICE NUMBER?', name: 'data'}
     ])
     response.role = 'MANAGER'
     console.log(response)
@@ -41,7 +43,7 @@ const promptManager = async () => {
 const promptEngineer = async () => {
     console.log("\nENGINEER: \n")
     const response = await inquirer.prompt([
-        new empQ('name'), new empQ('id'), empQ('email'),{type: 'input', message: 'GITHUB?', name: 'data'}
+        new empQ('name'), new empQ('id'), new empQ('email'),{type: 'input', message: 'GITHUB?', name: 'data'}
     ])
     response.role = 'ENGINEER'
     // console.log(response);
@@ -55,7 +57,7 @@ const promptEngineer = async () => {
 const promptIntern = async () => {
     console.log("\nINTERN: \n")
     const response = await inquirer.prompt([
-        new empQ('name'), new empQ('id'), empQ('email'),{type: 'input', message: 'SCHOOL?', name: 'data'}
+        new empQ('name'), new empQ('id'), new empQ('email'),{type: 'input', message: 'SCHOOL?', name: 'data'}
     ])
     response.role = 'INTERN'
     // console.log(response);

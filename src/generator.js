@@ -15,7 +15,7 @@ const generateHTML = async () => {
 
     const managerRes = await userPrompt.promptManager();
 
-    roster.push(new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
+    roster.manager = (new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
     console.log(roster) //DEBUG
 
     while (!done){
@@ -26,13 +26,13 @@ const generateHTML = async () => {
         switch(choice){
             case 'ENGINEER':
                 empRes = await userPrompt.promptEngineer();
-                roster.engineer[empRes.id](new Engineer(empRes.name, empRes.id, empRes.email, empRes.data));
+                roster.engineer[empRes.id]= (new Engineer(empRes.name, empRes.id, empRes.email, empRes.data));
                 console.log(roster);
 
             break;
             case 'INTERN':
                 empRes = await userPrompt.promptIntern();
-                roster.intern[empRes.id](new Intern(empRes.name, empRes.id, empRes.email, empRes.data));
+                roster.intern[empRes.id] = (new Intern(empRes.name, empRes.id, empRes.email, empRes.data));
                 console.log(roster);
             break;
             default: 
