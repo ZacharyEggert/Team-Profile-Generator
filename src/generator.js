@@ -40,7 +40,13 @@ const generateHTML = async () => {
             break;
         }
     }
-    templater.fillTemplate(roster);
+
+    const HTMLoutput = templater.fillTemplate(objectAccumulator);
+    fs.mkdir('./out', {recursive: true}, (e) => {e?console.error(e.message):null;})
+    fs.writeFileSync('./out/index.html', HTMLoutput, (e) => {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");})
+
+
+
 }
 
 module.exports = {generateHTML}
