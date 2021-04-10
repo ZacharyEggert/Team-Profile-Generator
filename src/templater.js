@@ -183,4 +183,4 @@ const internTemplate = (internData) => {
 }
 
 
-module.exports = {fillTemplate};
+module.exports = {fillTemplate, managerTemplate, engineerTemplate, internTemplate};
