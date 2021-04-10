@@ -2,21 +2,21 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const userPrompt = require('./prompt.js');
 const templater = require('./templater.js');
+const Manager = require('../src/manager');
+const Engineer = require('../src/engineer');
+const Intern = require('../src/intern');
 
 
-let objectAccumulator = {manager: {}, engineer: {}, intern: {}};
+let roster = {manager: {}, engineer: {}, intern: {}};
 
-/**
- * Generates HTML file based on user input
- */
 const generateHTML = async () => {
 
     let done = false;
 
     const managerRes = await userPrompt.promptManager();
 
-    objectAccumulator.manager = managerRes;
-    console.log(objectAccumulator) //DEBUG
+    roster.manager = (new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
+    //console.log(roster)
 
     while (!done){
 
@@ -26,27 +26,29 @@ const generateHTML = async () => {
         switch(choice){
             case 'ENGINEER':
                 empRes = await userPrompt.promptEngineer();
-                objectAccumulator.engineer["_" + empRes.id] = empRes;
+                roster.engineer[empRes.id]= (new Engineer(empRes.name, empRes.id, empRes.email, empRes.data));
+                //console.log(roster);
 
             break;
             case 'INTERN':
                 empRes = await userPrompt.promptIntern();
-                objectAccumulator.intern["_" + empRes.id] = empRes;
-
+                roster.intern[empRes.id] = (new Intern(empRes.name, empRes.id, empRes.email, empRes.data));
+                //console.log(roster);
             break;
             default: 
                 done = true;
             break;
         }
-
-        console.log(objectAccumulator); //DEBUG
-
-
     }
 
-    const HTMLoutput = templater.fillTemplate(objectAccumulator);
-    fs.mkdir('./out', {recursive: true}, (e) => {e?console.error(e.message):null;})
-    fs.writeFileSync('./out/index.html', HTMLoutput, (e) => {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");})
+    const HTMLoutput = templater.fillTemplate(roster);
+
+    fs.mkdir('./out', {recursive: true}, (e) => 
+        {e?console.error(e.message):null;});
+    fs.writeFileSync('./out/index.html', HTMLoutput, (e) => 
+        {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");});
+    fs.writeFileSync('./out/roster.json', JSON.stringify(roster), (e) => 
+        {e?console.error(e.message):console.log("ROSTER FILE CREATED SUCCESSFULLY AT /out/roster.json")});
 
 
 
