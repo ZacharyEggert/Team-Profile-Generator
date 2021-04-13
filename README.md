@@ -20,3 +20,6 @@ Built as a practice for using Jest for post-product testing. Uses template liter
 ## Meta
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
+[link to example](https://zacharyeggert.github.io/Team-Profile-Generator/)
+
+[link to youtube](https://youtu.be/Gr00Zd6oeEE)
