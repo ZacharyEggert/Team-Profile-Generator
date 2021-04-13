@@ -12,9 +12,7 @@ let roster = {manager: {}, engineer: {}, intern: {}};
 const generateHTML = async () => {
 
     let done = false;
-
     const managerRes = await userPrompt.promptManager();
-
     roster.manager = (new Manager(managerRes.name, managerRes.id, managerRes.email, managerRes.data))
     //console.log(roster)
 
@@ -40,7 +38,6 @@ const generateHTML = async () => {
             break;
         }
     }
-
     const HTMLoutput = templater.fillTemplate(roster);
 
     fs.mkdir('./out', {recursive: true}, (e) => 
@@ -49,9 +46,6 @@ const generateHTML = async () => {
         {e?console.error(e.message):console.log("HTML FILE CREATED SUCCESSFULLY AT /out/index.html");});
     fs.writeFileSync('./out/roster.json', JSON.stringify(roster), (e) => 
         {e?console.error(e.message):console.log("ROSTER FILE CREATED SUCCESSFULLY AT /out/roster.json")});
-
-
-
 }
 
 module.exports = {generateHTML}
